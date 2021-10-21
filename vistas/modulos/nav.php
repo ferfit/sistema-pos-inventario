@@ -13,7 +13,7 @@
   <ul class="navbar-nav ml-auto">
     <li class="nav-item dropdown user-menu">
 
-      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+      <a  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
         <span>
           Fernando Pereyra
         </span>
@@ -22,7 +22,7 @@
       <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
 
         <li class="user-footer">
-          <a class="btn btn-default btn-flat float-right  btn-block " href="#">
+          <a class="btn btn-default btn-flat float-right  btn-block " href="cerrar-sesion">
             <i class="fa fa-fw fa-power-off"></i>
             Salir
           </a>
