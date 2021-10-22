@@ -15,7 +15,7 @@
 
       <a  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
         <span>
-          Fernando Pereyra
+          <?= $_SESSION['nombre'];?>
         </span>
       </a>
 
