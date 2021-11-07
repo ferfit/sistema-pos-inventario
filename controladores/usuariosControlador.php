@@ -75,6 +75,9 @@ class UsuariosControlador
                 /*----------------------------
                 Validación de la imagen
                 ----------------------------*/
+
+                $ruta = "";
+
                 if ($_FILES['foto']['tmp_name']) {
 
                     //Capturamos en un array el ancho y alto de la imagen que se sube
@@ -106,6 +109,24 @@ class UsuariosControlador
                         imagejpeg($destino, $ruta);
 
                     }
+                    // Si es png
+                    if ($_FILES['foto']['type'] == "image/png") {
+                        
+                        //Define codigo aleatorio
+                        $aletorio = mt_rand(100,900);
+                        //Define ruta donde se va a guardar
+                        $ruta = "vistas/img/usuarios/".$_POST['usuario']."/".$aletorio.".png";
+                        //Define origen del archivo temporal
+                        $origen = imagecreatefrompng($_FILES['foto']['tmp_name']);
+                        //Crea una imagen con el nuevo tamaño
+                        $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+                        //Copia y cambia el tamaño de parte de una imagen
+                        imagecopyresized($destino, $origen,0,0,0,0,$nuevoAncho,$nuevoAlto,$ancho,$alto);
+                        // guarda la foto modifica en al ruta que definimos
+                        imagepng($destino, $ruta);
+
+                    }
+                    
                 }
 
                 //variables
@@ -117,6 +138,7 @@ class UsuariosControlador
                     "nombre" => $_POST['nombre'],
                     "usuario" => $_POST['usuario'],
                     "password" => $encriptar,
+                    "foto" => $ruta,
                     "perfil" => $_POST['perfil']
                 ];
 
