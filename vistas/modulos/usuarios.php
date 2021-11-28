@@ -42,47 +42,61 @@
             </tr>
           </thead>
 
+
+
           <tbody>
 
-            <tr>
-              <td>1</td>
-              <td>Fernando Pereyra</td>
-              <td>Admin</td>
-              <td>
-                <img src="<?= $vistas; ?>/img/usuarios/default/anonymous.png" alt="" width="40px">
-              </td>
-              <td>Administrador</td>
-              <td>
-                <small class="badge badge-success"> Activado</small>
-              </td>
-              <td>2021-12-11 12:05:32</td>
-              <td>
-                <div class="btn-group">
-                  <button class="btn btn-warning mr-2"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                </div>
-              </td>
-            </tr>
+            <?php
 
-            <tr>
-              <td>1</td>
-              <td>Victoria Gonzalez</td>
-              <td>vicky</td>
-              <td>
-                <img src="<?= $vistas; ?>/img/usuarios/default/anonymous.png" alt="" width="40px">
-              </td>
-              <td>Vendedor</td>
-              <td>
-                <small class="badge badge-danger"> Desactivado</small>
-              </td>
-              <td>2021-12-11 12:05:32</td>
-              <td>
-                <div class="btn-group">
-                  <button class="btn btn-warning mr-2"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                </div>
-              </td>
-            </tr>
+            $item = null;
+            $valor = null;
+
+            $usuarios = UsuariosControlador::ctrMostrarUsuarios($item, $valor);
+
+
+            foreach ($usuarios as $key => $usuario) {
+
+              /* var_dump("<pre></pre>");
+              var_dump($usuario);
+              var_dump("<pre></pre>"); */
+
+              echo '
+              <tr>
+                <td>'.$usuario['id'].'</td>
+                <td>'.$usuario['nombre'].'</td>
+                <td>'.$usuario['usuario'].'</td>';
+
+                if($usuario['foto'] != ""){
+
+                  echo '
+                  <td>
+                    <img src="'.$usuario['foto'].'" alt="" width="40px">
+                  </td>';
+
+                } else {
+                  echo '
+                  <td>
+                    <img src="vistas/img/usuarios/default/anonymous.png" alt="" width="40px">
+                  </td>
+                  ';
+                }
+
+                echo '<td>'.$usuario['perfil'].'</td>
+                <td>
+                  <small class="badge badge-success"> '.$usuario['estado'].' </small>
+                </td>
+                <td>'.$usuario['ultimo_login'].'</td>
+                <td>
+                  <div class="btn-group">
+                    <button class="btn btn-warning mr-2 btnEditarUsuario" idUsuario="'.$usuario['id'].'" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </td>
+              </tr>
+              ';
+            }
+
+            ?>
 
           </tbody>
           <tfoot>
@@ -116,7 +130,7 @@ MODAL CREAR USUARIO
 
     <div class="modal-content">
 
-      <form method="POST" id="" enctype="multipart/form-data">
+      <form method="POST" enctype="multipart/form-data">
 
         <div class="modal-header">
           <h4 class="modal-title">Agregar Usuario</h4>
@@ -143,7 +157,7 @@ MODAL CREAR USUARIO
 
             <!-- Perfil -->
             <div class="form-group">
-              <select name="perfil" id="" class="form-control" required>
+              <select name="perfil"  class="form-control" required>
                 <option value="">Seleccione un perfil</option>
                 <option value="Administrador">Administrador</option>
                 <option value="Especial">Especial</option>
@@ -169,9 +183,86 @@ MODAL CREAR USUARIO
         </div>
 
         <?php
-          
-            $crearUsuario = new UsuariosControlador();
-            $crearUsuario->ctrCrearUsuario();
+
+        $crearUsuario = new UsuariosControlador();
+        $crearUsuario->ctrCrearUsuario();
+
+        ?>
+
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<!-----------------------------------------
+MODAL EDITAR CREAR USUARIO
+--------------------------------------- -->
+<div class="modal fade" id="modalEditarUsuario" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <form method="POST"  enctype="multipart/form-data">
+
+        <div class="modal-header">
+          <h4 class="modal-title">Editar Usuario</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="card-body">
+            <!-- Nombre -->
+            <div class="form-group">
+              <input type="text" class="form-control" name="editarNombre" id="editarNombre" value="" required>
+            </div>
+
+            <!-- Usuario -->
+            <div class="form-group">
+              <input type="text" class="form-control" name="editarUsuario" id="editarUsuario" value="" required readonly>
+            </div>
+
+            <div class="form-group">
+              <input type="password" class="form-control" name="editarPassword" id="editarPassword" placeholder="Escriba una nueva contraseña" required>
+              <input type="hidden" name="passwordActual" id="passwordActual">
+            </div>
+
+            <!-- Perfil -->
+            <div class="form-group">
+              <select name="editarPerfil" class="form-control" required>
+                <option value="" id="editarPerfil"></option>
+                <option value="Administrador">Administrador</option>
+                <option value="Especial">Especial</option>
+                <option value="Vendedor">Vendedor</option>
+              </select>
+            </div>
+
+            <!-- Foto -->
+            <div class="form-group">
+              <label for="foto">Subir foto</label> <br>
+              <input type="file" name="editarFoto" id="foto" class="foto">
+              <p class="text-danger mt-2">Peso máximo de la foto 2 mb.</p>
+              <img src="" alt="" width="40px" class="imagenFoto previsualizar" >
+
+              <input type="hidden" name="fotoActual" id="fotoActual">
+            </div>
+
+
+          </div>
+        </div>
+
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Modificar usuarios</button>
+        </div>
+
+        <?php
+
+        $editarUsuario = new UsuariosControlador();
+        $editarUsuario->ctrEditarUsuario();
 
         ?>
 

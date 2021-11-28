@@ -42,3 +42,48 @@ $(".foto").change(function(){
 
 
 })
+
+/*------------------------------------------
+EDITAR USUARIO
+------------------------------------------*/
+$('.btnEditarUsuario').click(function(){
+
+    //Variables
+    var idUsuario = $(this).attr("idUsuario");
+    console.log(idUsuario);
+
+    var datos = new FormData();
+    datos.append("idUsuario",idUsuario); // el 2° param es la variable anterior
+
+    //Petición ajax
+    $.ajax({
+        url:"ajax/usuarios.ajax.php",
+        method:"POST",
+        data: datos,
+        cache: false,
+        contentType:false,
+        processData:false,
+        dataType: "json",
+        success: function(respuesta){
+            
+            console.log("respuesta");
+            console.log(respuesta);
+            //Cargar datos en input
+            $("#editarNombre").val(respuesta['nombre']);
+            $("#editarUsuario").val(respuesta['usuario']);
+            $("#editarPerfil").html(respuesta['perfil']);
+            $("#editarPerfil").val(respuesta['perfil']);
+
+            $("#passwordActual").val(respuesta['password']);
+            $("#fotoActual").val(respuesta['foto']);
+
+            if(respuesta['foto'] != ""){
+                $(".previsualizar").attr("src",respuesta['foto']);
+            } else {
+                $(".previsualizar").attr("src","vistas/img/usuarios/default/anonymous.png");
+            }
+        }
+
+    });
+
+});
