@@ -81,15 +81,27 @@
                   ';
                 }
 
-                echo '<td>'.$usuario['perfil'].'</td>
-                <td>
-                  <small class="badge badge-success"> '.$usuario['estado'].' </small>
-                </td>
-                <td>'.$usuario['ultimo_login'].'</td>
+                echo '<td>'.$usuario['perfil'].'</td>';
+
+                if($usuario['estado'] != 0){
+                  echo '
+                    <td>
+                      <small class=" btn btn-success btnActivar cursor-pointer" idUsuario="'.$usuario['id'].'" estadoUsuario="0"> Activado </small>
+                    </td>
+                  ';
+                } else {
+                  echo '
+                    <td>
+                    <small class="btn btn-danger btnActivar cursor-pointer" idUsuario="'.$usuario['id'].'" estadoUsuario="1"> Desactivado </small>
+                    </td>
+                  ';
+                }
+                
+                echo '<td>'.$usuario['ultimo_login'].'</td>
                 <td>
                   <div class="btn-group">
                     <button class="btn btn-warning mr-2 btnEditarUsuario" idUsuario="'.$usuario['id'].'" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                    <button class="btn btn-danger btnEliminarUsuario" idUsuario="'.$usuario['id'].'" fotoUsuario="'.$usuario['foto'].'" usuario="'.$usuario['usuario'].'" ><i class="fas fa-trash-alt"></i></button>
                   </div>
                 </td>
               </tr>
@@ -226,7 +238,7 @@ MODAL EDITAR CREAR USUARIO
             </div>
 
             <div class="form-group">
-              <input type="password" class="form-control" name="editarPassword" id="editarPassword" placeholder="Escriba una nueva contraseña" required>
+              <input type="password" class="form-control" name="editarPassword" id="editarPassword" placeholder="Escriba una nueva contraseña">
               <input type="hidden" name="passwordActual" id="passwordActual">
             </div>
 
@@ -272,3 +284,10 @@ MODAL EDITAR CREAR USUARIO
   </div>
   <!-- /.modal-dialog -->
 </div>
+
+<?php
+
+  $eliminarUsuario = new UsuariosControlador();
+  $eliminarUsuario->ctrEliminarUsuario();
+
+?>
