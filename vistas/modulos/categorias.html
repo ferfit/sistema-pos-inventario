@@ -46,31 +46,31 @@
               <td>1</td>
               <td>Taladros</td>
               <td>
-                <div class="btn-group">
-                  <button class="btn btn-warning mr-2"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                </div>
-              </td>
+                  <div class="btn-group">
+                    <button class="btn btn-warning mr-2"  ><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger" ><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </td>
             </tr>
             <tr>
               <td>1</td>
               <td>Taladros</td>
               <td>
-                <div class="btn-group">
-                  <button class="btn btn-warning mr-2"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                </div>
-              </td>
+                  <div class="btn-group">
+                    <button class="btn btn-warning mr-2"  ><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger" ><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </td>
             </tr>
             <tr>
               <td>1</td>
               <td>Taladros</td>
               <td>
-                <div class="btn-group">
-                  <button class="btn btn-warning mr-2"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                </div>
-              </td>
+                  <div class="btn-group">
+                    <button class="btn btn-warning mr-2"  ><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger" ><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </td>
             </tr>
 
           </tbody>
@@ -98,7 +98,7 @@ MODAL CREAR CATEGORIA
 
     <div class="modal-content">
 
-      <form method="POST">
+      <form method="POST" enctype="multipart/form-data">
 
         <div class="modal-header">
           <h4 class="modal-title">Agregar Categoría</h4>
@@ -111,7 +111,7 @@ MODAL CREAR CATEGORIA
           <div class="card-body">
             <!-- Nombre -->
             <div class="form-group">
-              <input type="text" class="form-control" name="nombreCategoria" id="nombreCategoria" placeholder="Ingresar Categoría" required>
+              <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingresar Categoría" required>
             </div>
 
           </div>
@@ -124,14 +124,6 @@ MODAL CREAR CATEGORIA
 
       </form>
     </div>
-
-    <?php
-    $crearCategoria = new CategoriasControlador();
-    $crearCategoria->ctrCrearCategoria();
-
-
-
-    ?>
     <!-- /.modal-content -->
   </div>
   <!-- /.modal-dialog -->
