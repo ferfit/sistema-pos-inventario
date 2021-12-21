@@ -50,7 +50,6 @@ $(document).on('click', '.btnEditarUsuario', function () {
 
     //Variables
     var idUsuario = $(this).attr("idUsuario");
-    console.log(idUsuario);
 
     var datos = new FormData();
     datos.append("idUsuario", idUsuario); // el 2° param es la variable anterior

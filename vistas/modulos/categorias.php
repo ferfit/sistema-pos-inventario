@@ -41,37 +41,30 @@
 
 
           <tbody>
+            
+            <?php
 
-            <tr>
-              <td>1</td>
-              <td>Taladros</td>
-              <td>
-                <div class="btn-group">
-                  <button class="btn btn-warning mr-2"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Taladros</td>
-              <td>
-                <div class="btn-group">
-                  <button class="btn btn-warning mr-2"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Taladros</td>
-              <td>
-                <div class="btn-group">
-                  <button class="btn btn-warning mr-2"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                </div>
-              </td>
-            </tr>
+              $item = null;
+              $valor = null;
+              
+              $categorias = CategoriasControlador::ctrMostrarCategorias($item,$valor);
+
+              foreach ($categorias as $key => $categoria) {
+                echo  '
+                        <tr>
+                          <td>'.$categoria["id"].'</td>
+                          <td>'.$categoria["categoria"].'</td>
+                          <td>
+                            <div class="btn-group">
+                              <button class="btn btn-warning mr-2 btnEditarCategoria" idCategoria="'.$categoria["id"].'" data-toggle="modal" data-target="#modalEditarCategoria"><i class="fas fa-edit"></i></button>
+                              <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                          </td>
+                        </tr>
+                      ';
+              }
+
+            ?>
 
           </tbody>
           <tfoot>
@@ -87,8 +80,12 @@
     </div>
   </section>
   <!-- /.content -->
+  <h1>holaaaaaaaaaaaaaaa</h1>
+
 </div>
 <!-- /.content-wrapper -->
+
+
 
 <!-----------------------------------------
 MODAL CREAR CATEGORIA
@@ -111,7 +108,7 @@ MODAL CREAR CATEGORIA
           <div class="card-body">
             <!-- Nombre -->
             <div class="form-group">
-              <input type="text" class="form-control" name="nombreCategoria" id="nombreCategoria" placeholder="Ingresar Categoría" required>
+              <input type="text" class="form-control" name="nombreCategoria" id="nombreCategoria" placeholder="Ingresar Categoría" >
             </div>
 
           </div>
@@ -128,11 +125,54 @@ MODAL CREAR CATEGORIA
     <?php
     $crearCategoria = new CategoriasControlador();
     $crearCategoria->ctrCrearCategoria();
+    ?>
+    
+  </div>
 
+</div>
 
+<!-----------------------------------------
+MODAL EDITAR CATEGORIA
+--------------------------------------- -->
+<div class="modal fade" id="modalEditarCategoria" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <form method="POST" >
+        <input type="hidden" name="idCategoria" id="idCategoria">
+
+        <div class="modal-header">
+          <h4 class="modal-title">Editar Categoria</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="card-body">
+            <!-- Nombre -->
+            <div class="form-group">
+              <input type="text" class="form-control" name="editarCategoria" id="editarCategoria" value="">
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+
+      </form>
+    </div>
+
+    <?php
+
+      $editarCategoria = new CategoriasControlador();
+      $editarCategoria->ctrEditarCategoria();
 
     ?>
-    <!-- /.modal-content -->
+   
   </div>
-  <!-- /.modal-dialog -->
+ 
 </div>

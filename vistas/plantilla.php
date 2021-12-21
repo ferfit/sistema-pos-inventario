@@ -101,6 +101,7 @@ session_start();
   <!-- Scripts -->
   <script src="<?= $vistas; ?>/js/plantilla.js"></script>
   <script src="<?= $vistas; ?>/js/usuarios.js"></script>
+  <script src="<?= $vistas; ?>/js/categorias.js"></script>
   <!-- DataTables  & Plugins -->
   <script src="<?= $vistas; ?>/plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="<?= $vistas; ?>/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
