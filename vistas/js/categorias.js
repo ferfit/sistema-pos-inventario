@@ -3,7 +3,7 @@ $(document).ready(function(){
 })
 
 /*----------------------------------------- */
-/*         Editar Categoria                  */
+/*         Editar Categoria                 */
 /*----------------------------------------- */
 $('.btnEditarCategoria').click(function(){
     var idCategoria = $(this).attr('idCategoria');
@@ -28,6 +28,31 @@ $('.btnEditarCategoria').click(function(){
         }
 
     });
-
     
+})
+
+/*----------------------------------------- */
+/*         Eliminar Categoria               */
+/*----------------------------------------- */
+$('.btnEliminarCategoria').click(function(){
+    
+    var idCategoria = $(this).attr('idCategoria');
+    console.log(idCategoria);
+
+    Swal.fire({
+        title: 'Estas seguro?',
+        text: "Esta acción no se podrá revertir!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, borrar categoría!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            //Como estamos trabajando con rutas amigables configuradas, debemos escribir la ruta absoluta.
+            window.location = `index.php?ruta=categorias&idCategoria=${idCategoria}`;
+
+        }
+    })
 })

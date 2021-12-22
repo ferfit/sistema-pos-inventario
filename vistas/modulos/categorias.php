@@ -57,7 +57,7 @@
                           <td>
                             <div class="btn-group">
                               <button class="btn btn-warning mr-2 btnEditarCategoria" idCategoria="'.$categoria["id"].'" data-toggle="modal" data-target="#modalEditarCategoria"><i class="fas fa-edit"></i></button>
-                              <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                              <button class="btn btn-danger btnEliminarCategoria" idCategoria="'.$categoria["id"].'"><i class="fas fa-trash-alt"></i></button>
                             </div>
                           </td>
                         </tr>
@@ -176,3 +176,11 @@ MODAL EDITAR CATEGORIA
   </div>
  
 </div>
+
+<!-----------------------------------------
+ELIMINAR CATEGORIA
+--------------------------------------- -->
+<?php
+  $eliminarCategoria = new CategoriasControlador();
+  $eliminarCategoria->ctrEliminarCategoria();
+?>

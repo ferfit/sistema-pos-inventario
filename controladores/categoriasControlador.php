@@ -123,4 +123,28 @@ class CategoriasControlador
         }
     }
 
+    /*----------------------------------------- */
+    /*      Eliminar Categoria                  */
+    /*----------------------------------------- */
+    public function ctrEliminarCategoria(){
+        if(isset($_GET['idCategoria'])){
+            $tabla = "categorias";
+            $datos = $_GET['idCategoria'];
+
+            $respuesta = CategoriasModelo::mdlEliminarCategoria($tabla,$datos);
+
+            if($respuesta == "ok"){
+                echo  " <script>
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Exito!',
+                                text: 'La categoria se eliminó exitosamente.'
+                            }).then((result) => {
+                                window.location='categorias'
+                                })
+                        </script>";
+            }
+        }
+    }
+
 }
