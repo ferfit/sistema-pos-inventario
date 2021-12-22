@@ -80,8 +80,6 @@
     </div>
   </section>
   <!-- /.content -->
-  <h1>holaaaaaaaaaaaaaaa</h1>
-
 </div>
 <!-- /.content-wrapper -->
 
