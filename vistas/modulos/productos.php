@@ -27,7 +27,7 @@
       </div>
       <!-- /.card-header -->
       <div class="card-body">
-        <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <table  class="table table-striped table-bordered tablaProductos" style="width:100%">
 
           <thead>
             <tr>
@@ -47,62 +47,46 @@
 
 
           <tbody>
-            <tr>
-              <td>1</td>
-              <td><img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="40px" alt=""></td>
-              <td>0001</td>
-              <td>Lorem ipsum dolor sit amet consectetur </td>
-              <td>Taladros</td>
-              <td>20</td>
-              <td>5.00</td>
-              <td>10.00</td>
-              <td>2021-12-5 00:00:00</td>
-              <td>
-                <div class="btn-group">
-                  <button class="btn btn-warning mr-2 btnEditarProducto" data-toggle="modal" data-target="#modalEditarProducto"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-danger btnEliminarProducto"><i class="fas fa-trash-alt"></i></button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td><img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="40px" alt=""></td>
-              <td>0001</td>
-              <td>Lorem ipsum dolor sit amet consectetur </td>
-              <td>Taladros</td>
-              <td>20</td>
-              <td>5.00</td>
-              <td>10.00</td>
-              <td>2021-12-5 00:00:00</td>
-              <td>
-                <div class="btn-group">
-                  <button class="btn btn-warning mr-2 btnEditarProducto" data-toggle="modal" data-target="#modalEditarProducto"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-danger btnEliminarProducto"><i class="fas fa-trash-alt"></i></button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td><img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="40px" alt=""></td>
-              <td>0001</td>
-              <td>Lorem ipsum dolor sit amet consectetur </td>
-              <td>Taladros</td>
-              <td>20</td>
-              <td>5.00</td>
-              <td>10.00</td>
-              <td>2021-12-5 00:00:00</td>
-              <td>
-                <div class="btn-group">
-                  <button class="btn btn-warning mr-2 btnEditarProducto" data-toggle="modal" data-target="#modalEditarProducto"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-danger btnEliminarProducto"><i class="fas fa-trash-alt"></i></button>
-                </div>
-              </td>
-            </tr>
 
+            <?php
+            /*
+            $productos = ProductosControlador::ctrMostrarProductos($item = null, $valor = null);
+
+            foreach ($productos as $key => $producto) {
+              echo '
+                    <tr>
+                      <td>'.$producto['id'].'</td>
+                      <td><img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="40px" alt=""></td>
+                      <td>'.$producto['codigo'].'</td>
+                      <td>'.$producto['descripcion'].' </td>';
+
+                      //Buscamos la categoria segun el id
+                      $item = "id";
+                      $valor = $producto['id_categoria'];
+
+                      $categoria = CategoriasControlador::ctrMostrarCategorias($item,$valor);
+
+                      echo '<td>'.$categoria['categoria'].'</td>
+                      <td>'.$producto['stock'].'</td>
+                      <td>'.$producto['precio_compra'].'</td>
+                      <td>'.$producto['precio_venta'].'</td>
+                      <td>'.$producto['fecha'].'</td>
+                      <td>
+                        <div class="btn-group">
+                          <button class="btn btn-warning mr-2 btnEditarProducto" data-toggle="modal" data-target="#modalEditarProducto"><i class="fas fa-edit"></i></button>
+                          <button class="btn btn-danger btnEliminarProducto"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                ';
+            }
+            */
+            ?>
 
 
           </tbody>
           <tfoot>
+          
             <tr>
               <th>#</th>
               <th>Imagen</th>
@@ -114,7 +98,7 @@
               <th>Precio Venta</th>
               <th>Agregado</th>
               <th>Acciones</th>
-            </tr>
+            </tr> 
           </tfoot>
         </table>
       </div>
@@ -181,18 +165,22 @@ MODAL CREAR PRODUCTO
             </div>
             <!-- Porcentaje -->
 
-              <div class="col-6">
-                <div class="form-group">
-                  <input type="checkbox" class="minimal porcentaje" checked> Utilizar porcentaje 
-                </div>
+            <div class="col-6 mb-3">
+              <div class="icheck-danger d-inline">
+                <input type="checkbox" checked id="checkboxDanger1" class="porcentaje">
+                <label for="checkboxDanger1">Utilizar porcentaje
+                </label>
               </div>
+            </div>
 
-              <div class="col-6 row">
-                <div class="input-group">
+
+
+            <div class="col-6 row">
+              <div class="input-group">
                 <input type="number" class="form-control input-lg col-md-4" name="porcentaje" id="porcentaje" min="0" value="40" placeholder="I">
                 <span class="input-group-addon form-control col-4 col-md-3"><i class="fa fa-percent"></i></span>
-                </div>
               </div>
+            </div>
 
             <!-- Foto -->
             <div class="form-group mt-3">

@@ -26,6 +26,8 @@ session_start();
   <link rel="stylesheet" href="<?= $vistas; ?>/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?= $vistas; ?>/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="<?= $vistas; ?>/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="<?= $vistas; ?>/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 
 
   <!-- jQuery -->
@@ -120,11 +122,12 @@ session_start();
       $('#example').DataTable({
         "responsive": true,
         "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json",
+          "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json",
         },
       });
     });
-  </script>
+    </script>
+    <script src="<?= $vistas; ?>/js/productos.js"></script>
 
 
 </body>
