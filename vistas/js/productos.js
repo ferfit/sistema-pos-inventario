@@ -52,3 +52,80 @@ $('#categoria').change(function(){
 
     
 })
+
+/*--------------------------------------------------
+Agregando precio de venta dinamico
+---------------------------------------------------*/
+$('#precioCompra').change(function(){
+
+    if($('.checkPorcentaje').prop('checked')){
+
+        var precioCompra = $('#precioCompra').val();
+
+        var porcentaje = $('#porcentaje').val();
+
+        var precioVenta = Number((precioCompra*porcentaje/100)) + Number(precioCompra);
+
+        console.log(precioVenta);
+
+        $('#precioVenta').val(precioVenta);
+        $('#precioVenta').prop('readonly',true);
+
+    }
+
+
+})
+
+
+/*--------------------------------------------------
+Cambio de porcentaje
+---------------------------------------------------*/
+$('#porcentaje').change(function(){
+
+    if($('.checkPorcentaje').prop('checked')){
+
+        cambiaPrecioVenta();
+
+
+    }
+
+})
+
+/*--------------------------------------------------
+Si se cambia el check de utilizar porcentaje
+---------------------------------------------------*/
+
+$('.checkPorcentaje').change(function(){
+
+    if( $(this).is(':checked') ) {
+
+        cambiaPrecioVenta();
+
+    } else {
+
+        $('#precioVenta').prop('readonly',false);
+
+    }
+
+})
+
+
+
+/*Funciones*/
+
+function cambiaPrecioVenta(){
+
+    var precioCompra = $('#precioCompra').val();
+
+    var porcentaje = $('#porcentaje').val();
+
+    var precioVenta = Number((precioCompra*porcentaje/100)) + Number(precioCompra);
+
+    console.log(precioVenta);
+
+    $('#precioVenta').val(precioVenta);
+
+    $('#precioVenta').prop('readonly',true);
+
+
+}

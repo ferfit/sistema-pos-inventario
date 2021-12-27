@@ -173,7 +173,7 @@ MODAL CREAR PRODUCTO
 
             <div class="col-6 mb-3">
               <div class="icheck-danger d-inline">
-                <input type="checkbox" checked id="checkboxDanger1" class="porcentaje">
+                <input type="checkbox" checked id="checkboxDanger1" class="checkPorcentaje">
                 <label for="checkboxDanger1">Utilizar porcentaje
                 </label>
               </div>
