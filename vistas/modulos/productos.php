@@ -127,24 +127,30 @@ MODAL CREAR PRODUCTO
 
         <div class="modal-body">
           <div class="card-body">
-            <!-- Codigo -->
-            <div class="form-group">
-              <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Ingresar Codigo" required>
-            </div>
-
-            <!-- Descripción -->
-            <div class="form-group">
-              <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar Descripción" required>
-            </div>
 
             <!-- Categoria -->
             <div class="form-group">
               <select name="categoria" class="form-control" id="categoria" required>
                 <option value="">Seleccione una categoría</option>
-                <option value="Administrador">Taladros</option>
-                <option value="Especial">Andamios</option>
-                <option value="Vendedor">Equipos para construcción</option>
+
+                <?php
+                $categorias = CategoriasControlador::ctrMostrarCategorias($item=null,$valor=null);
+
+                foreach ($categorias as $categoria) {
+                  echo '<option value="'.$categoria['id'].'">'.$categoria['categoria'].'</option>';
+                }
+                ?>
+
               </select>
+            </div>
+            <!-- Codigo -->
+            <div class="form-group">
+              <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Ingresar Codigo" readonly required>
+            </div>
+
+            <!-- Descripción -->
+            <div class="form-group">
+              <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Ingresar Descripción" required>
             </div>
 
             <!-- Stock -->

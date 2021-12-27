@@ -11,7 +11,7 @@ class ProductosModelo{
 
         if($item != null){
 
-            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item ORDER BY id DESC");
 
             $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
 
