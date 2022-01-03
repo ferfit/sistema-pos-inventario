@@ -207,8 +207,8 @@ MODAL CREAR PRODUCTO
 
         <?php
 
-        //$crearUsuario = new UsuariosControlador();
-        //$crearUsuario->ctrCrearUsuario();
+        $crearProducto = new ProductosControlador();
+        $crearProducto->ctrCrearProducto();
 
         ?>
 
