@@ -191,7 +191,7 @@ MODAL CREAR PRODUCTO
             <!-- Foto -->
             <div class="form-group mt-3">
               <label for="foto">Subir imagén</label> <br>
-              <input type="file" name="imagen" id="imagen" class="foto">
+              <input type="file" name="foto" id="foto" class="foto">
               <p class="text-danger mt-2">Peso máximo de la foto 2 mb.</p>
               <img src="<?= $vistas; ?>/img/productos/default/anonymous.png" alt="" width="40px" class="imagenFoto">
             </div>

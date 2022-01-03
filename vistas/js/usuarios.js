@@ -1,5 +1,5 @@
 /*------------------------------------------
-PREVISUALIZACION LA FOTO QUE SE SELECCIONA
+PREVISUALIZACION LA FOTO QUE SE SELECCIONA 
 ------------------------------------------*/
 
 $(".foto").change(function () {
