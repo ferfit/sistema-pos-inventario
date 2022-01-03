@@ -27,8 +27,8 @@ class ProductosControlador
             if (
                 preg_match('/^[-a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST['descripcion']) &&
                 preg_match('/^[0-9 ]+$/', $_POST['stock']) &&
-                preg_match('/^[0-9 ]+$/', $_POST['precioCompra']) &&
-                preg_match('/^[0-9 ]+$/', $_POST['precioVenta'])) {
+                preg_match('/^[0-9.]+$/', $_POST['precioCompra']) &&
+                preg_match('/^[0-9.]+$/', $_POST['precioVenta'])) {
                 
                 
                 //variables
@@ -47,7 +47,7 @@ class ProductosControlador
                         
                 //Modelo
                 $respuesta = ProductosModelo::mdlCrearProducto($tabla,$datos);
-                var_dump($respuesta);die();
+                
                 if($respuesta == "ok"){
 
                     echo "  <script>

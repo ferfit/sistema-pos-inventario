@@ -161,12 +161,12 @@ MODAL CREAR PRODUCTO
             <div class="form-group row">
               <!-- Precio Compra -->
               <div class="input-group col-6">
-                <input type="number" class="form-control" name="precioCompra" id="precioCompra" min="0" placeholder="Precio de compra" required>
+                <input type="number" class="form-control" name="precioCompra" step="any" min="0" id="precioCompra"  placeholder="Precio de compra" required>
               </div>
 
               <!-- Precio Venta -->
               <div class="input-group col-6">
-                <input type="number" class="form-control" name="precioVenta" id="precioVenta" min="0" placeholder="Precio de venta" required>
+                <input type="number" class="form-control" name="precioVenta" step="any" min="0" id="precioVenta"  placeholder="Precio de venta" required>
               </div>
             </div>
             <!-- Porcentaje -->
